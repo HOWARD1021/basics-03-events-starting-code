@@ -3,7 +3,11 @@ const app = Vue.createApp({
     return {
       counter: 0,
       name: "",
+      lastName:"",
     };
+  },
+  computed:{
+   
   },
   methods: {
     setName(event, lastName) {
@@ -20,6 +24,14 @@ const app = Vue.createApp({
     reSet() {
       this.name = "";
     },
+    outPutFullName(){
+      console.log('render again');
+      if(this.name === '') {
+        return ''         
+      }else {
+        return this.name + " " + "howard"
+      }
+    }
   },
 });
 
