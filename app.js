@@ -1,23 +1,26 @@
-Vue.createApp({
+const app = Vue.createApp({
   data() {
     return {
+      counter: 0,
       name: "",
-      enterName: "",
-      enterNameUp: "",
     };
   },
   methods: {
-    showAlert() {
-      alert("submit");
+    setName(event, lastName) {
+      this.name = event.target.value ;
+      // this.name = event.target.value + " " + lastName;
     },
-    setEnterName(event) {
-      this.enterName = event.target.value;
+    add(num) {
+      this.counter = this.counter + num;
     },
-    setEnterNameUp(event) {
-      this.enterNameUp = event.target.value;
+    reduce(num) {
+      this.counter = this.counter - num;
+      // this.counter--;
     },
-    submitForm(event){
-              alert('submit')
-            }
+    reSet() {
+      this.name = "";
+    },
   },
-}).mount("#assignment");
+});
+
+app.mount("#events");
