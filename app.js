@@ -6,7 +6,7 @@ Vue.create({
     },
     methods:{
         showAlert() {
-           return alert(this.name) 
+            alert('submit')
         }
 
     }
