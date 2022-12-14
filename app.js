@@ -1,24 +1,22 @@
 const app = Vue.createApp({
   data() {
     return {
-        isSelected: true,
-        toggle:false,
+      isSelected: true,
+      Istoggle: false,
     };
   },
-  methods:{
-    togglePara(){
-        return {
-            this.toggle  = !this.toggle
-        } 
-    }
+  methods: {
+    toggle() {
+      this.Istoggle = !this.Istoggle;
+    },
   },
-  computed:{
+  computed: {
     selectedCss() {
-        return {
-            user1:this.isSelected
-        }
-    },   
-  }
+      return {
+        user1: this.isSelected,
+      };
+    },
+  },
 });
 
-app.mount("#assignment")
+app.mount("#assignment");

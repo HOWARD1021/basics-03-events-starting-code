@@ -24,12 +24,12 @@
       <p>
         Style me!
       </p>
-      <button @click="togglePara">Toggle Paragraph</button>
+      <button @click="toggle">Toggle Paragraph</button>
       <!-- 2) Use the "visible" and "hidden" classes to show/ hide the above paragraph -->
       <!-- Clicking the button should toggle between the two options -->
 
       <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
-      <input type="text" />
+      <input type="text" :class="['visible' , hidden:Istoggle]"/>
       <p>Style me inline!</p>
     </section>
   </body>
