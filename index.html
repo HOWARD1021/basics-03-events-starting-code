@@ -19,18 +19,19 @@
     <section id="assignment">
       <!-- 1) Fetch the user input and use it as a CSS class -->
       <!-- The entered class should be added to the below paragraph -->
-      <input type="text" :class="selectedCss"/>
+      <input type="text" v-model="isSelected" />
       <!-- (available classes: "user1", "user2") -->
-      <p>
-        Style me!
-      </p>
+      <p :class="selectedCss">Style me!</p>
       <button @click="toggle">Toggle Paragraph</button>
       <!-- 2) Use the "visible" and "hidden" classes to show/ hide the above paragraph -->
       <!-- Clicking the button should toggle between the two options -->
 
       <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
-      <input type="text" :class="['visible' , hidden:Istoggle]"/>
-      <p>Style me inline!</p>
+      <input type="text" v-model="inputBackgroundColor" />
+      <input type="text" :class="['visible' , {hidden:Istoggle}]"/>
+      <!-- <p :style="{backgroundColor: inputBackgroundColor}">Style me inline!</p>
+      <p  :style="{backgroundColor: inputBackgroundColor}"><a :href="vueLink">Style me inline!</a></p> -->
     </section>
+    <!-- :style="{borderColor:boxASelected ? 'red': '#ccc'}" -->
   </body>
 </html>
