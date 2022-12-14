@@ -14,24 +14,30 @@
   </head>
   <body>
     <header>
-      <h1>Vue Styling</h1>
+      <h1>Vue Lists and Conditional Content</h1>
     </header>
     <section id="assignment">
-      <!-- 1) Fetch the user input and use it as a CSS class -->
-      <!-- The entered class should be added to the below paragraph -->
-      <input type="text" v-model="isSelected" />
-      <!-- (available classes: "user1", "user2") -->
-      <p :class="selectedCss">Style me!</p>
-      <button @click="toggle">Toggle Paragraph</button>
-      <!-- 2) Use the "visible" and "hidden" classes to show/ hide the above paragraph -->
-      <!-- Clicking the button should toggle between the two options -->
+      <h2>Assignment</h2>
+      <!-- 1) Add code to manage a list of tasks in a Vue app -->
+      <!-- When clicking "Add Task" a new task with the entered text should be added -->
+      <input type="text" v-model="inputTask">
+      <button @click="addTask" >Add Task</button>
+      <!-- <ul v-if="isToggle">
+           <li v-for="(goal ,index) in list " @click="deleteTask(index)" :key="goal">{{index+1}}. -  {{goal}}
+            <input @click.stop>
+           </li> 
+       </ul> -->
+      <ul v-if="isToggle">
+        <li v-for="(value ,key) in {name: 'Howard' , age: 22}"  :key="value">{{key}}  :  {{value}}
+         <input @click.stop>
+        </li> 
+     <!-- 2) Output the list of tasks here -->
+   </ul>
 
-      <!-- 3) Add dynamic inline styling to the below paragraph and let the user enter a background-color -->
-      <input type="text" v-model="inputBackgroundColor" />
-      <input type="text" :class="['visible' , {hidden:Istoggle}]"/>
-      <!-- <p :style="{backgroundColor: inputBackgroundColor}">Style me inline!</p>
-      <p  :style="{backgroundColor: inputBackgroundColor}"><a :href="vueLink">Style me inline!</a></p> -->
+      <!-- 3) When the below button is pressed, the list should be shown or hidden -->
+      <!-- BONUS: Also update the button caption -->
+      <button @click="setToggle" >{{buttonCaption}} </button>
+      <!-- <button @click="setToggle" v-else="!isToggle"> Show List</button> -->
     </section>
-    <!-- :style="{borderColor:boxASelected ? 'red': '#ccc'}" -->
   </body>
 </html>
