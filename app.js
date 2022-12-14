@@ -1,27 +1,24 @@
 const app = Vue.createApp({
   data() {
     return {
-      boxASelected: false,
-      boxBSelected: false,
-      boxCSelected: false,
+        isSelected: true,
+        toggle:false,
     };
   },
-  methods: {
-    boxSelected(box) {
-      console.log(box);
-      if (box === "A") {
-        this.boxASelected = !this.boxASelected;
-      } else if (box === "B") {
-        this.boxBSelected = !this.boxBSelected;
-      } else if (box === "C") {
-        this.boxCSelected = !this.boxCSelected;
-      }
-    },
+  methods:{
+    togglePara(){
+        return {
+            this.toggle  = !this.toggle
+        } 
+    }
   },
-  computed: {
-    boxASelectedClass() {
-      return {active: this.boxASelected};
-    },
-  },
+  computed:{
+    selectedCss() {
+        return {
+            user1:this.isSelected
+        }
+    },   
+  }
 });
-app.mount("#styling");
+
+app.mount("#assignment")
