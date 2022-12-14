@@ -14,17 +14,25 @@
   </head>
   <body>
     <header>
-      <h1>Vue Events</h1>
+      <h1>Vue Dynamic Styling</h1>
     </header>
-    <section id="events">
-      <h2>Events in Action</h2>
-      <button v-on:click="add(10)">Add 10</button>
-      <button v-on:click="reduce(5)">Subtract 5</button>
-      <p>Result: {{ counter }}</p>
-      <button v-on:click="reSet"> Reset Button</button>
-      <input type="text" v-model="name">
-      <!-- <input type="text" v-bind:value ="name" v-on:input="setName($event, 'Schwarzmüller')"> -->
-      <p>Your Name: {{ name }}</p>
+    <section id="styling">
+      <!-- <div class="demo" :style="{borderColor:boxASelected ? 'red': '#ccc'}" -->
+      <!-- :class="boxASelected ? 'demo active': 'demo'" -->
+      <div
+        :class="['demo',boxASelectedClass]"
+        @click="boxSelected('A')"
+      ></div>
+      <div
+        class="demo"
+        :class="{active :boxBSelected}"
+        @click="boxSelected('B')"
+      ></div>
+      <div
+        class="demo"
+        :class="{active :boxCSelected}"
+        @click="boxSelected('C')"
+      ></div>
     </section>
   </body>
 </html>
