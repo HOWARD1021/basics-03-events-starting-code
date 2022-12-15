@@ -14,30 +14,59 @@
   </head>
   <body>
     <header>
-      <h1>Vue Lists and Conditional Content</h1>
+      <h1>Monster Slayer</h1>
     </header>
-    <section id="assignment">
-      <h2>Assignment</h2>
-      <!-- 1) Add code to manage a list of tasks in a Vue app -->
-      <!-- When clicking "Add Task" a new task with the entered text should be added -->
-      <input type="text" v-model="inputTask">
-      <button @click="addTask" >Add Task</button>
-      <!-- <ul v-if="isToggle">
-           <li v-for="(goal ,index) in list " @click="deleteTask(index)" :key="goal">{{index+1}}. -  {{goal}}
-            <input @click.stop>
-           </li> 
-       </ul> -->
-      <ul v-if="isToggle">
-        <li v-for="(value ,key) in {name: 'Howard' , age: 22}"  :key="value">{{key}}  :  {{value}}
-         <input @click.stop>
-        </li> 
-     <!-- 2) Output the list of tasks here -->
-   </ul>
-
-      <!-- 3) When the below button is pressed, the list should be shown or hidden -->
-      <!-- BONUS: Also update the button caption -->
-      <button @click="setToggle" >{{buttonCaption}} </button>
-      <!-- <button @click="setToggle" v-else="!isToggle"> Show List</button> -->
-    </section>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Monster Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="dragonBarStyle">
+            {{dragonHealth}}
+          </div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Your Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="playerBarStyle">
+            {{playerHealth}}
+          </div>
+        </div>
+      </section>
+      <section class="container" v-if="winner">
+        <h2>Game Over</h2>
+        <h3 v-if="winner === 'dragon'">Dragon Win!</h3>
+        <h3 v-else-if="winner === 'Player'">You Win!</h3>
+        <h3 v-else="winner === 'draw'">It`s a draw</h3>
+        <button @click="reStart">Restart</button>
+      </section>
+      <section id="controls" v-else>
+        <button @click="attackDragon">ATTACK</button>
+        <button :disabled="magicAttackLimit" @click="magicAttackDragon">
+          SPECIAL ATTACK
+        </button>
+        <button @click="healPlayer">HEAL</button>
+        <button @click="surrender">SURRENDER</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Battle Log</h2>
+        <ul>
+          <li v-for="logMessage in logMessages" key="logMessage">
+            <span
+              :class="{'log--player':logMessage.actionBy === 'Player' , 'log--monster' :logMessage.actionBy=== 'Dragon'}"
+              >{{logMessage.actionBy ==='Player' ? 'Player' : 'Dragon'}}
+            </span>
+            <span v-if="logMessage.actionType === 'Heal'">
+              heals himself for
+              <span class="log--heal">{{logMessage.actionValue}}</span>
+            </span>
+            <span v-else
+              >attacks and deals
+              <span class="log--damage">{{logMessage.actionValue}}</span>
+            </span>
+          </li>
+        </ul>
+      </section>
+    </div>
   </body>
 </html>
